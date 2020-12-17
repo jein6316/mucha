@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+/*===== 메인 작품 추천 리스트 레이아웃 =====*/
+.contents {
+	margin-top: 20px;
+}
+
+.first_contents-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* padding-top: 60px; */
+}
+
+.contents-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contents_title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.type1-contents_contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.type1-content-box {
+    /* display: flex;  
+    flex-direction: column; */
+    width: 220px;
+    height: 320px;
+}
+
+.type1-content-box a img {
+    position: relative;
+    width: 200px;
+    height: 285px;
+    /* border: 0.5px solid rgb(300, 300, 300); */
+    border-radius: 3px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+}
+
+.type1-content_title {
+    /* margin: 10px, 0px; */
+	font-weight: bold;
+}
+
+/*===== 검색 작품 추천 리스트 레이아웃 =====*/
+.search{
+	margin-top: 20px;
+}
+
+.search_first_contents-box {
+    width: 100%;
+    /* display: flex; */
+    justify-content: center;
+    /* padding-top: 60px; */
+}
+
+.search_contents-box {
+    width: 100%;
+    /* display: flex; */
+    justify-content: center;
+}
+
+.search_contents_title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.search_type1-contents_contents {
+    /* display: flex; */
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    margin-bottom: 30px;
+    
+    text-align: center;
+}
+
+.search_type1-content-box {
+	/* display: flex; */
+	vertical-align: middle;
+    flex-direction: column;
+    width: 300px;
+    height: 320px;
+}
+
+.search_type1-content-box a img {
+    position: relative;
+    width: 200px;
+    height: 285px;
+    /* border: 0.5px solid rgb(300, 300, 300); */
+    border-radius: 3px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+}
+
+.search_type1-content_title {
+    /* margin: 10px, 0px; */
+	font-weight: bold;
+}
+
+

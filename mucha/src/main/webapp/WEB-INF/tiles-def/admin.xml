@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 관리자페이지 메인 -->
+    <definition name="adminMain" 
+               template="/WEB-INF/views/template/layout.jsp">
+    	<put-attribute name="title" value="관리자 페이지"/>
+    	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMain.jsp"/>  
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>        
+    </definition>
+    <!-- 관리자 외 접근금지 -->
+    <definition name="memberWarning" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자외 접근금지"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberWarning.jsp"/>       
+    </definition>
+     <!-- 관리자 리스트 페이지 -->
+    <definition name="adminManagerList" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자 관리"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminManagerList.jsp"/>       
+    </definition>
+    <!-- 관리자 삭제 -->
+    <definition name="adminDelete" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자 관리"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminDelete.jsp"/>       
+    </definition>
+    <!-- 관리자 추가 -->
+    <definition name="adminPlus" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자 추가"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminPlus.jsp"/>       
+    </definition>
+    <!-- 관리자페이지 관리자 정보 상세 보기 -->
+    <definition name="adminManagerDetail" 
+              extends="adminMain">
+    	<put-attribute name="title" value="관리자정보 상세 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminManagerDetail.jsp"/>       
+    </definition>
+     <!-- 관리자페이지 내 정보 수정 -->
+    <definition name="adminMemberModify" 
+              extends="adminMain">
+    	<put-attribute name="title" value="내 정보 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberModify.jsp"/>       
+    </definition>
+    <!-- 뮤지컬 등록 페이지 -->
+    <definition name="adminMusicalRegister" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 등록"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalRegister.jsp"/>       
+    </definition>
+    <!-- 뮤지컬 리스트 보기 -->
+    <definition name="adminMusicalList" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 리스트 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalList.jsp"/>       
+    </definition>
+     <!-- 뮤지컬 상세 보기 -->
+    <definition name="adminMusicalDetail" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 리스트 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalDetail.jsp"/>       
+    </definition>
+    <!-- 뮤지컬 수정 폼 들어가기 -->
+    <definition name="adminMusicalModify" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalModify.jsp"/>       
+    </definition>
+     <!-- 뮤지컬 삭제 페이지 들어가기 -->
+    <definition name="adminMusicalDelete" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 삭제"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalDelete.jsp"/>       
+    </definition>
+      <!-- 뮤지컬 삭제 완료 페이지 들어가기 -->
+    <definition name="adminMusicalDeleteCompleted" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 삭제"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalDeleteCompleted.jsp"/>       
+    </definition>
+     <!-- 뮤지컬 리뷰 관리 전체보기 페이지 들어가기 -->
+    <definition name="adminMusicalReviews" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 리뷰 관리"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalReviews.jsp"/>       
+    </definition>
+     <!-- 뮤지컬 리뷰 관리 가려진 리뷰 페이지 들어가기 -->
+    <definition name="hiddenReviews" 
+              extends="adminMain">
+    	<put-attribute name="title" value="뮤지컬 리뷰 관리"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMusicalReviews.jsp"/>       
+    </definition>
+    <!-- 관리자페이지 회원 정보 리스트 보기 -->
+    <definition name="adminMemberList" 
+              extends="adminMain">
+    	<put-attribute name="title" value="회원 정보 리스트 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberList.jsp"/>       
+    </definition>
+    <!-- 관리자페이지 회원 정보 상세 보기 -->
+    <definition name="adminMemberDetail" 
+              extends="adminMain">
+    	<put-attribute name="title" value="회원 정보 상세 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/adminMemberDetail.jsp"/>       
+    </definition>
+     
+    <!-- 공지사항 리스트 -->
+     <definition name="noticeList" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 리스트"/> 
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeList.jsp"/>  
+    </definition>
+     <!-- 공지사항 작성 -->
+    <definition name="noticeWrite" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 작성"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeWrite.jsp"/>  
+    </definition>
+    <!-- 공지사항 내용 보기 -->
+    <definition name="noticeView" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 보기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeView.jsp"/>  
+    </definition>
+    <definition name="noticeModify" extends="adminMain">
+    	<put-attribute name="title" value="공지사항 수정"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/noticeModify.jsp"/>  
+    </definition>
+</tiles-definitions>
+
+
+
+
+
+
+

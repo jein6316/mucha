@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="memberMain" template="/WEB-INF/views/template/layout.jsp">
+		<put-attribute name="title" value="Mucha 회원관리 페이지"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/memberMain.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	<!-- 회원정보 변경 -->
+    <definition name="join" extends="memberMain">
+    	<put-attribute name="title" value="회원가입"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"/>       
+    </definition>
+    <definition name="joinCom" extends="memberMain">
+    	<put-attribute name="title" value="회원가입완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/joinCom.jsp"/>       
+    </definition>
+	<!-- 회원정보 변경 -->
+    <definition name="login" extends="memberMain">
+    	<put-attribute name="title" value="회원로그인"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/login.jsp"/>       
+    </definition>
+	<!-- 회원정보 변경 -->
+    <definition name="modifyMember" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyMember.jsp"/>       
+    </definition>
+    <definition name="modifyMemberCom" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyMemberCom.jsp"/>       
+    </definition>
+    <!-- 선호장르 변경 -->
+    <definition name="modifyPrefer" extends="memberMain">
+    	<put-attribute name="title" value="선호장르 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyPrefer.jsp"/>    
+    </definition>
+    <definition name="modifyPreferCom" extends="memberMain">
+    	<put-attribute name="title" value="선호장르 변경완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/modifyPreferCom.jsp"/>    
+    </definition>
+    <!-- 비밀번호 변경 -->
+    <definition name="changePassword" extends="memberMain">
+    	<put-attribute name="title" value="비밀번호 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/changePassword.jsp"/>       
+    </definition>
+    <definition name="changePasswordCom" extends="memberMain">
+    	<put-attribute name="title" value="비밀번호 변경완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/changePasswordCom.jsp"/>       
+    </definition>
+    <!-- 프로필 이미지 변경 -->
+    <definition name="myImage" extends="memberMain">
+    	<put-attribute name="title" value="회원정보 변경"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/myImage.jsp"/>       
+    </definition>
+    <!-- 이용권 구매 -->
+    <definition name="ticket" extends="memberMain">
+    	<put-attribute name="title" value="이용권 구매"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/ticket.jsp"/>       
+    </definition>
+    <definition name="ticketCom" extends="memberMain">
+    	<put-attribute name="title" value="이용권 구매완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/ticketCom.jsp"/>       
+    </definition>
+    <!-- 회원탈퇴 -->
+    <definition name="deleteMember" extends="memberMain">
+    	<put-attribute name="title" value="회원탈퇴"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/deleteMember.jsp"/>       
+    </definition>
+    <definition name="deleteMemberCom" extends="memberMain">
+    	<put-attribute name="title" value="회원탈퇴 완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/deleteMemberCom.jsp"/>       
+    </definition>
+    <!-- 임시비밀번호설정및전송 -->
+    <definition name="findPassword" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPassword.jsp"/>       
+    </definition>
+    <definition name="findPasswordCom" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/findPasswordCom.jsp"/>       
+    </definition>
+    <!-- 공지사항 보기 -->
+    <definition name="memberNoticeList" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송하기"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberNoticeList.jsp"/>       
+    </definition>
+    <definition name="memberNoticeView" extends="memberMain">
+    	<put-attribute name="title" value="임시비밀번호 발송완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberNoticeView.jsp"/>       
+    </definition>
+       <!-- 이용권만료처리안내 -->
+    <definition name="expireCom" extends="memberMain">
+    	<put-attribute name="title" value="이용권 만료 처리완료"/>
+    	<put-attribute name="body" value="/WEB-INF/views/member/expireCom.jsp"/>       
+    </definition>
+</tiles-definitions>   
+
+
+
+
+
+
+

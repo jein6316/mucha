@@ -1,0 +1,62 @@
+/* 메뉴바와 겹쳐있는 작품 썸네일 */
+.thumbnail {
+    width: 100%;
+    height: 400px;
+    background-color: rgb(31, 31, 31);
+}
+
+/* 썸네일 밑에 겹쳐있는 콘텐츠 정보들 */
+.content_info-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+/* 콘텐츠 정보들 중에 왼쪽 부분 */
+.content_info-box .left-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 166px;
+    height: 236px;
+    background-color: white;
+    border: 1px solid rgb(226, 220, 220);
+    border-radius: 3px;
+}
+
+/* 콘텐츠 정보 중 오른쪽 부분 */
+.right-column {
+    width: 750px;
+    height: 230px;
+    margin-left: 22px;
+}
+
+/* 오른쪽 부분 중 첫번째 줄 */
+.content_info{
+    font-size: 13px;
+    margin-bottom: 25px;
+    color: rgb(122, 122, 122);
+    
+}
+
+
+/* 오른쪽 부분 중 마지막 줄 */
+.content_info:last-child {
+    display: flex;
+}
+/* 더보기 */
+.btn-moreInfo{
+	float:right;
+}
+/* 바로보기 */
+.content-watch{
+	margin-right:200px;
+}
+/* 평가하기 */
+.js-leaveStar{
+	margin-right:200px;	
+}

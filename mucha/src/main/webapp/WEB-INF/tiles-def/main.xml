@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 첫 페이지 -->
+    <definition name="musFirst" template="/WEB-INF/views/template/first.jsp">
+        <put-attribute name="title" value="뮤챠" />
+    	<put-attribute name="body" value="/WEB-INF/views/main/musFirst.jsp"/>  
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>        
+    </definition>
+
+	<!-- 메인 페이지 -->
+    <definition name="main" template="/WEB-INF/views/template/layout.jsp">
+        <put-attribute name="title" value="뮤지컬 메인" />
+    	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/main/musMain.jsp"/>  
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>        
+    </definition>
+    
+    <!-- 메인 검색 페이지 -->
+    <definition name="mainSearch" extends="main">
+        <put-attribute name="title" value="뮤지컬 메인 검색" />
+    	<put-attribute name="body" value="/WEB-INF/views/main/musMainSearch.jsp"/>  
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+    </definition>
+    
+    <!-- 카테고리 페이지 -->
+     <definition name="musCategory" extends="main">
+        <put-attribute name="title" value="뮤지컬 메인 검색" />
+    	<put-attribute name="body" value="/WEB-INF/views/main/musCategory.jsp"/>  
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+    </definition>
+</tiles-definitions>
+
+
+
+
+
+
+

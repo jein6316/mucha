@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="kr.spring.main.dao.MusMainMapper">  
+<!-- 총 레코드 수 -->
+ 	<!-- <select id="selectMusMainCount" resultType="integer">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM musical
+ 	</select>	 -->
+ 	<!-- 목록, 키워드 제목 배우로 검색 -->
+ 	<select id="selectMusMainList" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           		<if test="keyword != ''">
+ 		           			mus_name LIKE '%' || #{keyword} || '%' or
+ 		           			mus_actor LIKE '%' || #{keyword} || '%' or
+ 		           			mus_summary LIKE '%' || #{keyword} || '%' or
+ 		           			mus_detail LIKE '%' || #{keyword} || '%'		           					           			
+ 		           		</if>
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 카테고리별 목록 -->
+ 
+ 	<select id="selectLicense" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           	musical.gen_num	= 1
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 	
+ 	<select id="selectOriginal" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           	musical.gen_num	= 2
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+
+ 	<select id="selectCreation" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           musical.gen_num= 3		
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 
+ 	<select id="selectFamily" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		          musical.gen_num= 4 
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+ 
+ 	<select id="selectPerformance" parameterType="map" resultType="MusMainVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM musical
+ 		           <where>
+ 		           musical.gen_num=5		
+ 		           </where>
+ 		           ORDER BY mus_num DESC)a)
+ 	<![CDATA[           
+ 		WHERE rnum >= #{start} AND rnum <= #{end}           
+ 	]]>
+ 	</select>
+</mapper>   
+
+
+
+
+
+
+

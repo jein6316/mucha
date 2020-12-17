@@ -1,0 +1,147 @@
+/* ================== header ====================  */
+
+.header-top{
+	position:fixed;
+	top: 0;
+	width:100%;
+	padding-bottom:15px;
+	
+	z-index: 3;
+}
+
+.top_header{
+	display : flex;
+	margin:20px 30px 0 40px;
+	justify-content : space-between;
+	
+}
+
+.header-logo{
+	display: flex;
+	align-items: center;	
+}
+
+.watcha{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.index-startButton a{
+	text-decoration: none;
+}
+
+.top-start_button1{
+	display:flex;
+	align-items:center;
+	font-size: 15px;
+	border-radius: 50px;
+	color:black;
+	padding : 5px 20px;
+	margin-top: 20px;
+	margin-right: 20px;
+	text-align:center;
+	
+	background-color: pink;
+}
+
+.logo_link{
+	text-decoration: none;
+	color:white;
+}
+
+/* ====================== body div ======================= */
+/* body{
+overflow-y: scroll;
+scroll-behavior: smooth;
+}
+ */
+.wallpaper1{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+   
+    background: url(${pageContext.request.contextPath}/resources/images/first5.jpg) center center / cover no-repeat;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 500ms ease 0s;
+}
+.main_promotion{
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	margin: 295px 30px 0 30px;
+}
+
+.main_promotion-one{
+	display:flex;
+	justify-content: center;
+	align-content:center;
+	font-size : 55px;
+	font-weight:lighter;
+}
+
+.main_promotion-two{
+	font-size:20px;
+	margin-top: 30px;
+	color:rgba(255,255,255,0.5);
+}
+
+.main_promotion a{
+	text-decoration: none;
+}
+
+.main_promotion-three{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color:#FE2E64;
+	border-radius: 50px;
+	color:white;
+	margin-top:65px;
+	padding: 10px 40px;
+}
+
+.scroll_page{
+	display:flex;
+	flex-direction:column;
+	position:absolute;
+	right:40px;
+	top:400px;
+}
+
+
+.scroll_page i{
+	text-decoration: none;
+	color:white;
+	font-size: 30px;
+	margin-bottom:10px;
+	opacity:0.1;	
+}
+
+.select_page i{
+	color:white;
+	opacity:0.5;
+}
+
+.bottom{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin-top:100px;
+}
+
+.arrow_down{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	font-size: 50px;
+	font-weight:lighter;
+	margin-top:95px;
+}
+
+.arrow_down i{
+	text-decoration: none;
+	color: white;
+}

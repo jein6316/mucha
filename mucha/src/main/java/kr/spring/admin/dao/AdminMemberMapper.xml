@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.admin.dao.AdminMemberMapper">
+	<!--회원 리스트 -->
+	<select id="selectList" parameterType="map"
+		resultType="memberVO">
+		SELECT
+		*
+		FROM
+		(SELECT a.*,rownum rnum FROM
+			(SELECT * FROM member_detail d JOIN member m ON d.mem_num=m.mem_num
+		<where>
+			m.auth != 0
+			<if test="keyword != '' and keyfield == 1">and d.mem_num LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 2">and d.nickname LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 3">and m.email LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 4">
+			and (d.mem_num LIKE '%' || #{keyword} || '%' 
+			or d.nickname LIKE '%' || #{keyword} || '%'
+			or m.email LIKE '%' || #{keyword} || '%'
+			or d.mem_num LIKE '%' || #{keyword} || '%')</if>
+		</where>
+		ORDER BY d.mem_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>
+	</select>
+	
+
+	<!--일반 회원 총 글 또는 검색된 글의 갯수 구하기 -->
+	<select id="selectRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		count(*)
+		FROM member_detail d JOIN member m ON d.mem_num=m.mem_num
+		<where>
+			m.auth != 0
+			<if test="keyword != '' and keyfield == 1">d.mem_num LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 2">d.nickname LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 3">m.email LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 4">
+			d.mem_num LIKE '%' || #{keyword} || '%' 
+			or d.nickname LIKE '%' || #{keyword} || '%'
+			or m.email LIKE '%' || #{keyword} || '%'
+			or d.mem_num LIKE '%' || #{keyword} || '%'</if>
+		</where>
+	</select>
+	
+	<!--관리자 리스트 -->
+	<select id="managerList" parameterType="map"
+		resultType="memberVO">
+		SELECT
+		*
+		FROM
+		(SELECT a.*,rownum rnum FROM
+			(SELECT * FROM member_detail d JOIN member m ON d.mem_num=m.mem_num
+		<where>
+			m.auth = 0
+			<if test="keyword != '' and keyfield == 1">and d.mem_num LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 2">and d.nickname LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 3">and m.email LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 4">
+			and (d.mem_num LIKE '%' || #{keyword} || '%' 
+			or d.nickname LIKE '%' || #{keyword} || '%'
+			or m.email LIKE '%' || #{keyword} || '%'
+			or d.mem_num LIKE '%' || #{keyword} || '%')</if>
+		</where>
+		ORDER BY d.mem_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>
+	</select>
+	
+	<!-- 관리자 목록총 글 또는 검색된 글의 갯수 구하기 -->
+	<select id="selectManagerCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		count(*)
+		FROM member_detail d JOIN member m ON d.mem_num=m.mem_num
+		<where>
+			m.auth = 0
+			<if test="keyword != '' and keyfield == 1">and d.mem_num LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 2">and d.nickname LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 3">and m.email LIKE '%' || #{keyword} || '%' </if>
+			<if test="keyword != '' and keyfield == 4">
+			and (d.mem_num LIKE '%' || #{keyword} || '%' 
+			or d.nickname LIKE '%' || #{keyword} || '%'
+			or m.email LIKE '%' || #{keyword} || '%'
+			or d.mem_num LIKE '%' || #{keyword} || '%')</if>
+		</where>
+		
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+

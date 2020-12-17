@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.admin.dao.AdminMusicalMapper">
+	<!--뮤지컬 리스트 -->
+	<select id="selectList" parameterType="map"
+		resultType="adminMusicalVO">	
+	   SELECT 
+	   	 * 
+	  	 FROM 
+	   	(SELECT a.*,rownum rnum 
+	   		FROM (select * FROM musical m join genre g on m.gen_num = g.gen_num
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+         m.gen_num LIKE '%' || #{keyword} || '%' 
+         or m.mus_name LIKE '%' || #{keyword} || '%' 
+         or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+      </where>
+      ORDER BY m.mus_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>
+	</select>
+	<!-- 총 글 또는 검색된 글의 갯수 구하기 -->
+	<select id="selectRowCount" parameterType="map"
+		resultType="integer">
+		SELECT 
+	   	count(*)
+	  	 FROM 
+	   	 musical m join genre g on m.gen_num = g.gen_num
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         m.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         m.mus_name LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         g.gen_name LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+         m.gen_num LIKE '%' || #{keyword} || '%' or m.mus_name LIKE '%' || #{keyword} || '%' or  g.gen_name LIKE '%' || #{keyword} || '%' </if>
+		 </where>
+
+     	 </select>
+	<!-- 뮤지컬 수정 -->
+	<update id="updateMusical" parameterType="adminMusicalVO">
+		UPDATE musical SET
+		<if test="mus_postname!=''"><!--아무것도 넣지않아도 비어있는 문자열로 처리하므로 null이 아닌 빈문자열로 넣어야 한다. -->
+			mus_post=#{mus_post},
+			mus_postname=#{mus_postname},
+		</if>
+		mus_name=#{mus_name},
+		gen_num=#{gen_num},
+		mus_age=#{mus_age},
+		mus_actor=#{mus_actor},
+		mus_time=#{mus_time},
+		mus_hit=#{mus_hit},
+		mus_video=#{mus_video},
+		mus_detail=#{mus_detail},
+		mus_summary=#{mus_summary}
+		WHERE mus_num=#{mus_num}
+	</update>
+	
+	<!-- 뮤지컬 리뷰 리스트 갯수-->
+	<select id="selectReviewsRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+ 			COUNT(*)
+ 		FROM reviews r JOIN musical m	
+		ON	r.mus_num=m.mus_num
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         r.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         r.mem_num LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 3">
+         r.mus_num LIKE '%' || #{keyword} || '%' or  r.mem_num LIKE '%' || #{keyword} || '%' </if>
+		 </where>
+      </select>
+     <!-- 등록된 뮤지컬 리뷰 리스트 -->
+     <select id="selectReviewsList" parameterType="map" resultType="commentsVO">
+		SELECT
+			*
+		FROM(SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT
+					*
+					FROM reviews r JOIN member_detail m
+					ON r.mem_num=m.mem_num
+					ORDER BY r.rev_num DESC)a)
+		<![CDATA[
+			WHERE rnum>=#{start} AND rnum <=#{end}
+		]]>
+	</select>
+	<!-- 가려진 리뷰 리스트 갯수-->
+	<select id="selectHiddenReviewsRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+ 			COUNT(*)
+ 		FROM reviews r JOIN musical m	
+		ON	r.mus_num=m.mus_num
+      <where>
+      		r.hide_rev is not null 
+         <if test="keyword != '' and keyfield == 1">
+        and r.mus_num LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+        and r.mem_num LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 3">
+        and r.mus_num LIKE '%' || #{keyword} || '%' or  r.mem_num LIKE '%' || #{keyword} || '%' </if>
+		 </where>
+      </select>
+     <!-- 가려진 뮤지컬 리뷰 리스트 -->
+     <select id="selectHiddenReviewsList" parameterType="map" resultType="commentsVO">
+		SELECT
+			*
+		FROM(SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT
+					*
+					FROM reviews r JOIN member_detail m
+					ON r.mem_num=m.mem_num
+					<where>
+					r.hide_rev is not null
+					</where>
+					ORDER BY r.rev_num DESC)a)
+		<![CDATA[
+			WHERE rnum>=#{start} AND rnum <=#{end}
+		]]>
+	</select>
+
+</mapper>
+
+
+
+
+
+
+

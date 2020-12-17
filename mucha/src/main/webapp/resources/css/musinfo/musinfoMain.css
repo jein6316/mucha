@@ -1,0 +1,99 @@
+/* 콘텐츠 정보들 */
+.content_info-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 25px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+/* 뮤지컬 제목 */
+.content_title{
+   font-size:25px;
+   color:white;
+}
+/* 콘텐츠 정보들 중에 기본정보 윗부분 */
+.content_info-box .left-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(226, 220, 220);
+    border-radius: 3px;
+}
+
+/* 콘텐츠 정보 중 오른쪽 부분 */
+.right-column {
+    width: 750px;
+    height: 230px;
+    margin-left: 22px;
+}
+
+/* 첫번째 줄 */
+.content_info{
+    font-size: 23px;
+    margin-bottom: 25px;
+    color: rgb(122, 122, 122);   
+}
+
+/* 마지막 줄 */
+.content_info:last-child {
+    display: flex;
+}
+
+/* 바로보기, 평가하기 */
+.watch, .review, .join, .edit{
+   background-color:#27272b;
+   border:0;
+   outline:0;
+   margin-right:20px;
+   color:rgb(122,122,122);
+}
+/* 포스터 오른쪽 큰 제목 */
+.contents_contents_title{
+   font-size: 23px;
+   margin: 15px auto;
+}
+
+/* 한줄평 디자인 */
+.user_profile:nth-child(1), .newComments:nth-child(1){
+	float:left;
+	margin-right:10px;
+}
+.newComments{
+	height:80px;
+}
+/* 한줄평 더보기 */
+#moreReviews{
+   background-color:#27272b;
+   color:rgb(122, 122, 122);
+   border:0;
+   outline:0;
+   font-size:10pt;
+}
+
+
+
+.cursor {
+    cursor: pointer;
+}
+      .contents_contents_column{
+            overflow:hidden;
+         }
+      .contents_contents_column .contents_contents_summary.hidden{
+         white-space:nowrap;
+         word-wrap:normal;
+         width:90%;
+         overflow:hidden;
+         text-overflow: ellipsis;
+         float:left;
+         
+      }
+
+      .btn-moreInfo{display:none;white-space:nowrap; color:rgb(122, 122, 122)}
+      
+      @media screen and (max-width: 533px){
+         .contents_contents_column .contents_contents_summary.hidden{
+            width:75%;
+         }
+      }
+

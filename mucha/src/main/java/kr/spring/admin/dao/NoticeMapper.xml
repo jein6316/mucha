@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.admin.dao.NoticeMapper"> 
+ 	<!-- 공지사항리스트 보기 -->
+	 <select id="selectList" parameterType="map"
+	                               resultType="noticeVO">
+	 	 SELECT 
+		 * 
+		 FROM 
+		(SELECT a.*,rownum rnum 
+		FROM (select * FROM notice n
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         n.no_title LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         n.no_content LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         n.no_mem_numLIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+          n.no_num LIKE '%' || #{keyword} || '%'
+          or n.no_title LIKE '%' || #{keyword} || '%' 
+          or n.no_content LIKE '%' || #{keyword} || '%' </if>
+      </where>
+      ORDER BY n.no_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>    
+	 </select>
+	 <!-- 공지사항 갯수 구하기 -->
+	 <select id="selectRowCount" resultType="integer">
+	 	SELECT 
+	   	count(*)
+	  	 FROM 
+	   	notice n
+      <where>
+         <if test="keyword != '' and keyfield == 1">
+         n.no_title LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+         n.no_content LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+         n.mem_num LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+           n.no_num LIKE '%' || #{keyword} || '%'
+          or n.no_title LIKE '%' || #{keyword} || '%' 
+          or n.no_content LIKE '%' || #{keyword} || '%' </if>
+		</where>                            
+	 </select>
+	 <!-- 공지사항 등록 -->
+	 <update id="updateNotice" parameterType="noticeVO">
+	 	UPDATE notice SET
+	 	  no_title=#{no_title},
+	 	  mem_num=#{mem_num},
+	 	  no_content=#{no_content},
+	 	  no_regdate=SYSDATE,
+	 	  noticeDate=#{noticeDate}
+	   WHERE no_num=#{no_num}	  
+	 </update>
+	 
+	 <!-- 일반회원 공지사항 보기 -->
+  <select id="selectMemberNoticeList" parameterType="map"
+	                               resultType="noticeVO">
+	 	 SELECT 
+		 * 
+		 FROM 
+		(SELECT a.*,rownum rnum 
+		FROM (select * FROM notice n
+      <where>
+      n.noticedate > SYSDATE
+         <if test="keyword != '' and keyfield == 1">
+       and n.no_title LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+       and  n.no_content LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+       and  n.no_mem_numLIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+       and  n.no_num LIKE '%' || #{keyword} || '%'
+          or n.no_title LIKE '%' || #{keyword} || '%' 
+          or n.no_content LIKE '%' || #{keyword} || '%' </if>
+      </where>
+      ORDER BY n.no_num DESC)a)
+      <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+    ]]>    
+	 </select>
+	 <!-- 공지사항 갯수 구하기 -->
+	 <select id="selectMemberNoitceRowCount" resultType="integer">
+	 	SELECT 
+	   	count(*)
+	  	 FROM 
+	   	notice n
+      <where>
+       n.noticedate > SYSDATE
+         <if test="keyword != '' and keyfield == 1">
+       and  n.no_title LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 2">
+       and  n.no_content LIKE '%' || #{keyword} || '%' </if>
+         <if test="keyword != '' and keyfield == 3">
+       and  n.mem_num LIKE '%' || #{keyword} || '%'  </if>
+         <if test="keyword != '' and keyfield == 4">
+        and   n.no_num LIKE '%' || #{keyword} || '%'
+          or n.no_title LIKE '%' || #{keyword} || '%' 
+          or n.no_content LIKE '%' || #{keyword} || '%' </if>
+		</where>                            
+	 </select>
+	 <select id="selectNotice" parameterType="integer" resultType="noticeVO">
+	 	SELECT * FROM notice WHERE no_num=#{no_num}
+	 </select>	
+</mapper>
+
+
+
+
+
+
+
