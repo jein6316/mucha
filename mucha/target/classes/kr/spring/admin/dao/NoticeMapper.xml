@@ -53,8 +53,7 @@
 	 	  no_title=#{no_title},
 	 	  mem_num=#{mem_num},
 	 	  no_content=#{no_content},
-	 	  no_regdate=SYSDATE,
-	 	  noticeDate=#{noticeDate}
+	 	  no_regdate=SYSDATE
 	   WHERE no_num=#{no_num}	  
 	 </update>
 	 

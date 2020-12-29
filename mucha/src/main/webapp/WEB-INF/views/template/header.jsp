@@ -91,7 +91,7 @@
 			      <div class="form-group">
 			        <input type="text" class="form-control" name="keyword" id="keyword" placeholder="제목, 배우로 검색해보세요.">
 			      </div>
-			      <button type="submit" class="btn btn-danger" style="display:none">찾기</button>
+			      <button type="submit" class="btn btn-danger">찾기</button>
 			    </form>
 			</div><!--/.nav-collapse -->
 		</div>

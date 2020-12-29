@@ -74,14 +74,28 @@ public class AdminMusicalController {
 	public String registerSubmit(@Valid AdminMusicalVO adminMusicalVO, BindingResult result, HttpServletRequest request,
 			HttpSession session) {
 		System.out.println("//뮤지컬등록 처리 메소드 호출");
-
+		// 배우 이름 데이터 콤마붙여서 넣어주기
+		String[] actors = request.getParameterValues("mus_actor");
+		String mus_actor = "";
+		for (int i = 0; i < actors.length; i++) {
+			if (actors[i] != null && !actors[i].equals("")) {
+				if (i != 0) {
+					mus_actor += ",";
+				}
+				mus_actor += actors[i];
+			}
+		}
+		adminMusicalVO.setMus_actor(mus_actor);
 		if (log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 정보 저장>> : " + adminMusicalVO);
 		}
+
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
+			System.out.println("//오류발생");
 			return "adminMusicalRegister";
 		}
+
 		// 등록하기
 		adminMusicalService.insertMusical(adminMusicalVO);
 		System.out.println("//등록 완료");
