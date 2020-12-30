@@ -3,4 +3,5 @@
     
 <%
 	response.sendRedirect(request.getContextPath()+"/main/musMain.do");
+
 %>
