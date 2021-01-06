@@ -171,7 +171,7 @@
                               </listeners>
                               <constraint>
                                 <height>40</height>
-                                <width>100</width>
+                                <width>121</width>
                                 <x>609</x>
                                 <y>498</y>
                               </constraint>
@@ -221,7 +221,7 @@
                               </listeners>
                               <constraint>
                                 <height>40</height>
-                                <width>100</width>
+                                <width>131</width>
                                 <x>612</x>
                                 <y>551</y>
                               </constraint>
@@ -371,7 +371,7 @@
                               </listeners>
                               <constraint>
                                 <height>40</height>
-                                <width>100</width>
+                                <width>144</width>
                                 <x>610</x>
                                 <y>702</y>
                               </constraint>
@@ -942,7 +942,7 @@
                               </listeners>
                               <constraint>
                                 <height>40</height>
-                                <width>100</width>
+                                <width>125</width>
                                 <x>599</x>
                                 <y>190</y>
                               </constraint>
@@ -990,7 +990,7 @@
       <targetConnections/>
       <children/>
       <filterProperty/>
-      <name>actor</name>
+      <name>사용자</name>
     </net.java.amateras.uml.usecasediagram.model.UsecaseActorModel>
     <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseGeneralizationModel/target"/>
     <net.java.amateras.uml.usecasediagram.model.UsecaseModel reference="../net.java.amateras.uml.usecasediagram.model.UsecaseActorModel/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseGeneralizationModel/target/sourceConnections/net.java.amateras.uml.usecasediagram.model.UsecaseRelationModel/target"/>

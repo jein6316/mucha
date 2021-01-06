@@ -23,9 +23,9 @@ public interface AdminMusicalMapper {
 	
 	// 뮤지컬 등록 페이지
 	@Insert("INSERT INTO musical "
-			+ "(mus_num, mus_name, gen_num, mus_age, mus_actor,mus_time,mus_video,mus_hit,mus_post,mus_postname,mus_detail,mus_summary,mus_regdate)"
-			+"VALUES (mus_seq.nextval,#{mus_name},#{gen_num},#{mus_age},#{mus_actor},#{mus_time},#{mus_video},0,#{mus_post},#{mus_postname},#{mus_detail},#{mus_summary},"
-			+ "SYSDATE)")
+			+ "(mus_num, mus_name, gen_num, mus_age, mus_actor,mus_time,"
+			+ "mus_video,mus_hit,mus_post,mus_postname,mus_detail,mus_summary,mus_regdate)"
+			+"VALUES (mus_seq.nextval,#{mus_name},#{gen_num},#{mus_age},#{mus_actor},#{mus_time},SYSDATE)")
 	public void insertMusical(AdminMusicalVO adminMusical);
 
 	// 뮤지컬 상세 보기
@@ -51,13 +51,13 @@ public interface AdminMusicalMapper {
 	// 숨길 리뷰 저장
 	@Update("UPDATE reviews r SET hide_rev = review WHERE r.rev_num=#{rev_num}")
 	public void saveReview(Integer rev_num);
-
 	// 뮤지컬 리뷰 숨기기
-	@Update("UPDATE reviews r SET review ='관리자에 의해 리뷰가 가려졌습니다.' WHERE r.rev_num=#{rev_num}")
+	@Update("UPDATE reviews r SET review ='관리자에 의해 리뷰가 가려졌습니다.' "
+			+ "WHERE r.rev_num=#{rev_num}")
 	public void hideReview(Integer rev_num);
-
 	//리뷰 되돌리기
-	@Update("UPDATE reviews r SET review = hide_rev,hide_rev='' WHERE r.rev_num=#{rev_num}")
+	@Update("UPDATE reviews r SET review = hide_rev,hide_rev='' "
+			+ "WHERE r.rev_num=#{rev_num}")
 	public void returnReview(Integer rev_num); 
 	
 }

@@ -46,17 +46,13 @@ public class MusCategoryController {
 		
 		int count = 0;
 		// 페이징 처리 - 검색
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "musMain.do");
-		
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "musMain.do");	
 		// 페이지 시작 숫자, 끝 숫자
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		
 
-		// 신작순 목록 호출
-		
 		List<MusMainVO> list = null;
-		//갯수 , 리스트 구하기
+		//리스트 구하기
 		if (gen_num == 1) {
 			count = musMainService.selectLicenseCount(map);
 			if (log.isDebugEnabled()) {

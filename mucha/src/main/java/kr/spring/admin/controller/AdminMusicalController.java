@@ -74,18 +74,7 @@ public class AdminMusicalController {
 	public String registerSubmit(@Valid AdminMusicalVO adminMusicalVO, BindingResult result, HttpServletRequest request,
 			HttpSession session) {
 		System.out.println("//뮤지컬등록 처리 메소드 호출");
-		// 배우 이름 데이터 콤마붙여서 넣어주기
-		String[] actors = request.getParameterValues("mus_actor");
-		String mus_actor = "";
-		for (int i = 0; i < actors.length; i++) {
-			if (actors[i] != null && !actors[i].equals("")) {
-				if (i != 0) {
-					mus_actor += ",";
-				}
-				mus_actor += actors[i];
-			}
-		}
-		adminMusicalVO.setMus_actor(mus_actor);
+	
 		if (log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 정보 저장>> : " + adminMusicalVO);
 		}
@@ -168,10 +157,10 @@ public class AdminMusicalController {
 
 		return "adminMusicalModify";
 	}
-
 	// 뮤지컬 수정 처리
 	@RequestMapping(value = "/admin/adminMusicalModify.do", method = RequestMethod.POST)
-	public String modifySubmit(@Valid AdminMusicalVO adminMusicalVO, BindingResult result, HttpServletRequest request) {
+	public String modifySubmit(@Valid AdminMusicalVO adminMusicalVO, BindingResult result, 
+								HttpServletRequest request) {
 		System.out.println("//*******뮤지컬 수정 처리******");
 		if (log.isDebugEnabled()) {
 			log.debug("<<뮤지컬 정보 수정>> : " + adminMusicalVO);
@@ -180,27 +169,12 @@ public class AdminMusicalController {
 			System.out.println("//유효성 체크 결과 오류가 있으면 폼 호출");
 			return "adminMusicalModify";
 		}
-
-		// 배우 이름 데이터 콤마붙여서 넣어주기
-		String[] actors = request.getParameterValues("mus_actor");
-		String mus_actor = "";
-		for (int i = 0; i < actors.length; i++) {
-			if (actors[i] != null && !actors[i].equals("")) {
-				if (i != 0) {
-					mus_actor += ",";
-				}
-				mus_actor += actors[i];
-			}
-		}
-		System.out.println("//actors" + actors);
-		adminMusicalVO.setMus_actor(mus_actor);
 		// 유효성 체크 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
 			System.out.println("//오류발생");
 			return "adminMusicalModify";
 		}
 		System.out.println("//adminMusicalVO" + adminMusicalVO);
-
 		// 수정하기
 		adminMusicalService.updateMusical(adminMusicalVO);
 		System.out.println("//뮤지컬 정보 수정완료");

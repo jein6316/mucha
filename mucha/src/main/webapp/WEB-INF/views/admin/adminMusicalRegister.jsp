@@ -34,13 +34,13 @@ $(document).ready(function(){
 	/* 요약정보 글자 수 제한*/
 	
 	$('#mus_summary').on('keyup',function(){
-		if($(this).val().length>50){
+		if($(this).val().length>500){
 			$(this).val($(this).val().substring(0,500));
 			alert("요약 내용은 500자 이하로 입력하세요.");
 			}
 		});
 	$('#mus_detail').on('keyup',function(){
-		if($(this).val().length>50){
+		if($(this).val().length>2000){
 			$(this).val($(this).val().substring(0,2000));
 			alert("상세 내용은 2000자 이하로 입력하세요.");
 			}
